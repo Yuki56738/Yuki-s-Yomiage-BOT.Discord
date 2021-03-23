@@ -1,2 +1,2 @@
 def return_token():
-    return "yor-token"
+    return "your-token"

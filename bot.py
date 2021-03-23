@@ -44,6 +44,7 @@ async def on_message(message):
             await message.author.guild.voice_client.disconnect() 
         #コンソールに書き込まれたテキストを出力
         print(message.content)
+        #URLを読み上げない
         if not message.content.startswith("http://") and not message.content.startswith("https://"):
           #WAVファイルを作成
           creat_WAV(message.content)
