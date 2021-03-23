@@ -44,13 +44,14 @@ async def on_message(message):
             await message.author.guild.voice_client.disconnect() 
         #コンソールに書き込まれたテキストを出力
         print(message.content)
-        #WAVファイルを作成
-        creat_WAV(message.content)
-        #WAVファイルをDiscordにインプット
-        source = discord.FFmpegPCMAudio("output.wav")
-        #読み上げる
-        if yom_channel == message.channel.id:
-          message.guild.voice_client.play(source)
+        if not message.content.startswith("http://") and not message.content.startswith("https://"):
+          #WAVファイルを作成
+          creat_WAV(message.content)
+          #WAVファイルをDiscordにインプット
+          source = discord.FFmpegPCMAudio("output.wav")
+          #読み上げる
+          if yom_channel == message.channel.id:
+            message.guild.voice_client.play(source)
 
 #BOT起動
 client.run(TOKEN)

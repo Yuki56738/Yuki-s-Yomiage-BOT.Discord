@@ -17,7 +17,7 @@ def creat_WAV(inputText):
     m = '/usr/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice'
 
     #発声のスピード
-    r = '1.0'
+    r = '0.7'
 
     #出力ファイル名
     ow = 'output.wav'
