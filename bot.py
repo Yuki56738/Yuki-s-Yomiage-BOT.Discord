@@ -5,6 +5,7 @@ import subprocess
 import ffmpeg
 from voice_generator import creat_WAV
 from return_token import return_token
+import re
 
 #トークンを別ファイルから取得
 TOKEN = return_token()
@@ -31,27 +32,36 @@ async def on_ready():
 @client.event
 #テキストチャンネルに何か書き込まれたときに実行
 async def on_message(message):
-    global yom_channel
-    #.joinコマンドでVCに接続
-    if message.content == ".join":
-        await message.author.voice.channel.connect()
-        yom_channel = message.channel.id
-    else:
-        #そのテキストチャンネルだけ読み上げる
-        if yom_channel == message.channel.id:
-          #.leaveでBOTを切断
-          if message.content == ".leave":
-            await message.author.guild.voice_client.disconnect() 
+  global yom_channel
+  #.joinコマンドでVCに接続
+  if message.content == ".join":
+    await message.author.voice.channel.connect()
+    yom_channel = message.channel.id
+  else:
+      #そのテキストチャンネルだけ読み上げる
+      if yom_channel == message.channel.id:
+        #.leaveでBOTを切断
+        if message.content == ".leave":
+          await message.author.guild.voice_client.disconnect() 
         #コンソールに書き込まれたテキストを出力
         print(message.content)
         #URLを読み上げない
         if not message.content.startswith("http://") and not message.content.startswith("https://"):
-          #WAVファイルを作成
-          creat_WAV(message.content)
-          #WAVファイルをDiscordにインプット
-          source = discord.FFmpegPCMAudio("output.wav")
-          #読み上げる
-          if yom_channel == message.channel.id:
+          if len(message.content) <= 50:
+            #メンションを読み上げない
+            msg = message.content
+            pattern = r'<@!'
+            text = re.sub(pattern,'',msg) # 置換処理
+            pattern = r'[0-9]+>'
+            # return re.sub(pattern,'',msg) # 置換処理
+            text_alt = re.sub(pattern, '', msg)
+            
+            #WAVファイルを作成
+            creat_WAV(text_alt)
+            #WAVファイルをDiscordにインプット
+            source = discord.FFmpegPCMAudio("output.wav")
+            #読み上げる
+            # if yom_channel == message.channel.id:
             message.guild.voice_client.play(source)
 
 #BOT起動
