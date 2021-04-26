@@ -26,6 +26,9 @@ async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
+    print(f"Connected to following guilds:")
+    for x in client.guilds:
+      print(f"{x}")
     print('------')
 
 #イベントハンドラー
