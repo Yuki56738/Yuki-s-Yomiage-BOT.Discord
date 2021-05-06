@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #ライブラリのロード
 import discord
 from discord.ext import commands
@@ -40,7 +41,9 @@ async def on_message(message):
   if message.content == ".join":
     await message.author.voice.channel.connect()
     yom_channel.append(message.channel.id)
+    print(f"debug: yom_channel: {yom_channel}")
   else:
+    print(f"debug: else: yom_channel: {yom_channel}")
     if message.content == ".leave":
       await message.author.guild.voice_client.disconnect() 
       i = 0
@@ -52,7 +55,7 @@ async def on_message(message):
     for x in yom_channel:
       if x == message.channel.id:
         #コンソールに書き込まれたテキストを出力
-        print(message.content)
+        #print(message.content)
         #URLを読み上げない
         if not message.content.startswith("http://") and not message.content.startswith("https://"):
           if len(message.content) <= 50:
