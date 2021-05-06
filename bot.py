@@ -51,7 +51,7 @@ async def on_message(message):
       for x in yom_channel:
         if message.channel.id == x:
           del yom_channel[i]
-          i = i + 1
+        i = i + 1
       print(f"debug: leave: yom_channel: {yom_channel}")
       return
     #そのテキストチャンネルだけ読み上げる
