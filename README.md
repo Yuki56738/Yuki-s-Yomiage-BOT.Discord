@@ -18,7 +18,7 @@ $ pip3 install -U ffmpeg
 $ git clone https://github.com/Yuki56738/Yuki-s-Yomiage-BOT.Discord.git  
 
 4. 実行する  
-$ cd Yuki-s-Yomiage-BOT.Discord
+$ cd Yuki-s-Yomiage-BOT.Discord  
 $ chmod +x bot.py  
 $ ./bot.py
 
