@@ -13,7 +13,7 @@ TOKEN = return_token()
 #グローバル変数の定義
 global yom_channel
 #変数の初期化
-yom_channel = 0000
+yom_channel = []
 
 #BOTの初期化
 client = commands.Bot(command_prefix='.')
@@ -39,13 +39,18 @@ async def on_message(message):
   #.joinコマンドでVCに接続
   if message.content == ".join":
     await message.author.voice.channel.connect()
-    yom_channel = message.channel.id
+    yom_channel.append(message.channel.id)
   else:
-      #そのテキストチャンネルだけ読み上げる
-      if yom_channel == message.channel.id:
-        #.leaveでBOTを切断
-        if message.content == ".leave":
-          await message.author.guild.voice_client.disconnect() 
+    if message.content == ".leave":
+      await message.author.guild.voice_client.disconnect() 
+      i = 0
+      for x in yom_channel:
+        if message.channel.id == x:
+          del yom_channel[i]
+          i = i + 1
+    #そのテキストチャンネルだけ読み上げる
+    for x in yom_channel:
+      if x == message.channel.id:
         #コンソールに書き込まれたテキストを出力
         print(message.content)
         #URLを読み上げない
