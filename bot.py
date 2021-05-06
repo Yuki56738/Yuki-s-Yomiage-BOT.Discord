@@ -52,8 +52,8 @@ async def on_message(message):
         if message.channel.id == x:
           del yom_channel[i]
           i = i + 1
+      print(f"debug: leave: yom_channel: {yom_channel}")
       return
-    print(f"debug: leave: yom_channel: {yom_channel}")
     #そのテキストチャンネルだけ読み上げる
     for x in yom_channel:
       if x == message.channel.id:
