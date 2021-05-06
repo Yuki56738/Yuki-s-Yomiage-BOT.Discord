@@ -17,8 +17,11 @@ $ pip3 install -U ffmpeg
 3. git cloneする  
 $ git clone https://github.com/Yuki56738/Yuki-s-Yomiage-BOT.Discord.git  
 
-4. 実行する  
+4. トークンをreturn_token.pyに記述  
 $ cd Yuki-s-Yomiage-BOT.Discord  
+$ vi return_token.py 
+
+4. 実行する  
 $ chmod +x bot.py  
 $ ./bot.py
 
