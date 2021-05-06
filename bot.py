@@ -41,12 +41,15 @@ async def on_message(message):
   #.joinコマンドでVCに接続
   if message.content == ".join":
     await message.author.voice.channel.connect()
+    #yom_channelに読み上げるテキストチャンネルのIDを追加
     yom_channel.append(message.channel.id)
     print(f"debug: join: yom_channel: {yom_channel}")
   else:
     print(f"debug: else: yom_channel: {yom_channel}")
+    #.leaveコマンドでVCから切断
     if message.content == ".leave":
-      await message.author.guild.voice_client.disconnect() 
+      await message.author.guild.voice_client.disconnect()
+      #切断と同時に、yom_channelから該当のテキストチャンネルのIDを削除
       i = 0
       for x in yom_channel:
         if message.channel.id == x:
