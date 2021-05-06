@@ -14,6 +14,7 @@ TOKEN = return_token()
 #グローバル変数の定義
 global yom_channel
 #変数の初期化
+#読むテキストチャンネルの配列
 yom_channel = []
 
 #BOTの初期化
@@ -41,7 +42,7 @@ async def on_message(message):
   if message.content == ".join":
     await message.author.voice.channel.connect()
     yom_channel.append(message.channel.id)
-    print(f"debug: yom_channel: {yom_channel}")
+    print(f"debug: join: yom_channel: {yom_channel}")
   else:
     print(f"debug: else: yom_channel: {yom_channel}")
     if message.content == ".leave":
@@ -51,7 +52,8 @@ async def on_message(message):
         if message.channel.id == x:
           del yom_channel[i]
           i = i + 1
-      print(f"debug: leave: yom_channel: {yom_channel}")
+      return
+    print(f"debug: leave: yom_channel: {yom_channel}")
     #そのテキストチャンネルだけ読み上げる
     for x in yom_channel:
       if x == message.channel.id:
