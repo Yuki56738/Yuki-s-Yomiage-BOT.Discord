@@ -44,6 +44,7 @@ async def on_message(message):
     #yom_channelに読み上げるテキストチャンネルのIDを追加
     yom_channel.append(message.channel.id)
     print(f"debug: join: yom_channel: {yom_channel}")
+    print(f"Joined to {message.guild.name}: {message.channel.name}")
   else:
     print(f"debug: else: yom_channel: {yom_channel}")
     #.leaveコマンドでVCから切断
@@ -56,6 +57,7 @@ async def on_message(message):
           del yom_channel[i]
         i = i + 1
       print(f"debug: leave: yom_channel: {yom_channel}")
+      print(f"Left from {message.guild.name}: {message.channel.name}")
       return
     #そのテキストチャンネルだけ読み上げる
     for x in yom_channel:
