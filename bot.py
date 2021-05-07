@@ -65,7 +65,7 @@ async def on_message(message):
         #URLを読み上げない
         if not message.content.startswith("http://") and not message.content.startswith("https://"):
           #50文字までしか読み上げない
-          if len(message.content) <= 100:
+          if len(message.content) <= 50:
             #メンションを読み上げない
             msg = message.content
             pattern = r'<@!'
