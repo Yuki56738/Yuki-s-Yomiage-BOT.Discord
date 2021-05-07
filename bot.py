@@ -33,6 +33,11 @@ async def on_ready():
       print(f"{x}")
     print('------')
 
+@client.event
+async def on_guild_join(guild):
+  # print(f"self: {self}")
+  print(f"This BOT has joined to new guild: {guild}")
+
 #イベントハンドラー
 @client.event
 #テキストチャンネルに何か書き込まれたときに実行
