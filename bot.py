@@ -52,6 +52,14 @@ async def on_message(message):
     print(f"Joined to {message.guild.name}: {message.channel.name}")
   else:
     print(f"debug: else: yom_channel: {yom_channel}")
+    print("--------")
+    #print('Logged in as')
+    #print(client.user.name)
+    #print(client.user.id)
+    print(f"Connected to following guilds:")
+    for x in client.guilds:
+      print(f"{x}")
+    print('------')
     #.leaveコマンドでVCから切断
     if message.content == ".leave":
       await message.author.guild.voice_client.disconnect()
