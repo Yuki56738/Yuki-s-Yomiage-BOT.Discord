@@ -4,7 +4,6 @@ Shovelや喋太郎、ALBOTが落ちたときのために創りました！
 
 .joinでVCに接続します。  
 .leaveで切断します。  
-https://twitter.com/Yuki__Trans/status/1390374389238042626  
 
 使うだけなら↓のリンクをクリックすると、BOTを招待できます。  
 https://discord.com/oauth2/authorize?client_id=839928955612299275&permissions=3152896&scope=bot  
