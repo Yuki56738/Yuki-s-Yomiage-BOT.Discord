@@ -1,0 +1,13 @@
+[Unit]
+Description=alt-yomiage BOT
+
+[Service]
+ExecStart=/bin/bash -c '/usr/bin/python3 /home/ubuntu/bots/Yuki-s-Yomiage-BOT.Discord/bot.py'
+WorkingDirectory=/home/ubuntu/bots/Yuki-s-Yomiage-BOT.Discord
+Restart=always
+Type=simple
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
+
