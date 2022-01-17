@@ -1,4 +1,8 @@
+import datetime
+
+dt_now = datetime.datetime.now()
 def log(arg):
-  with open("./log/bot.log", "w")as f:
-    f.write(arg)
+  global dt_now
+  with open("./log/bot.log", "a")as f:
+    f.write(str(dt_now) + ": " + arg + "\n")
 
