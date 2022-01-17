@@ -10,7 +10,8 @@ import re
 from log import log
 
 #トークンを別ファイルから取得
-print("Bot started. See log/bot.log")
+print("Bot started. See ./log/bot.log")
+log("-----------")
 log("Script started.")
 TOKEN = return_token()
 GREETING = """Created by Yuki.
