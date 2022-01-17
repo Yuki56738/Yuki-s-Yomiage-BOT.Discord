@@ -7,12 +7,14 @@ import ffmpeg
 from voice_generator import creat_WAV
 from return_token import return_token
 import re
+from log import log
 
 #トークンを別ファイルから取得
+log("Script started.")
 TOKEN = return_token()
-GREETING = "Created by Yuki.
+GREETING = """Created by Yuki.
 .joinで接続。
-.leaveで切断。"
+.leaveで切断。"""
 
 #グローバル変数の定義
 global yom_channel
