@@ -15,7 +15,8 @@ log("Script started.")
 TOKEN = return_token()
 GREETING = """Created by Yuki.
 .joinで接続。
-.leaveで切断。"""
+.leaveで切断。
+※たまにメンテナンスで落ちます。その際は再度.joinにて接続をお願い致します。"""
 
 #グローバル変数の定義
 global yom_channel
