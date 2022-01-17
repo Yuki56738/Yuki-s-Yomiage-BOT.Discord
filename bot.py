@@ -10,6 +10,7 @@ import re
 from log import log
 
 #トークンを別ファイルから取得
+print("Bot started. See log/bot.log")
 log("Script started.")
 TOKEN = return_token()
 GREETING = """Created by Yuki.
@@ -30,17 +31,17 @@ voice_client = None
 @client.event
 #起動時に実行
 async def on_ready():
-    print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
-    print(f"Connected to following guilds:")
+    log('Logged in as')
+    log(client.user.name)
+    log(client.user.id)
+    log(f"Connected to following guilds:")
     for x in client.guilds:
-      print(f"{x}")
-    print('------')
+      log(f"{x}")
+    log('------')
 
 @client.event
 async def on_guild_join(guild):
-  print(f"This BOT has joined to new guild: {guild}")
+  log(f"This BOT has joined to new guild: {guild}")
 
 #イベントハンドラー
 @client.event
@@ -52,14 +53,14 @@ async def on_message(message):
     await message.author.voice.channel.connect()
     #yom_channelに読み上げるテキストチャンネルのIDを追加
     yom_channel.append(message.channel.id)
-    print(f"debug: join: yom_channel: {yom_channel}")
+    log(f"debug: join: yom_channel: {yom_channel}")
     await message.channel.send(GREETING)
-    print(f"Joined to {message.guild.name}: {message.channel.name}")
+    log(f"Joined to {message.guild.name}: {message.channel.name}")
   else:
     if message.content == GREETING:
       return
-    print(f"debug: else: yom_channel: {yom_channel}")
-    print("--------")
+    log(f"debug: else: yom_channel: {yom_channel}")
+    log("--------")
     #.leaveコマンドでVCから切断
     if message.content == ".leave":
       await message.author.guild.voice_client.disconnect()
@@ -69,8 +70,8 @@ async def on_message(message):
         if message.channel.id == x:
           del yom_channel[i]
         i = i + 1
-      print(f"debug: leave: yom_channel: {yom_channel}")
-      print(f"Left from {message.guild.name}: {message.channel.name}")
+      log(f"debug: leave: yom_channel: {yom_channel}")
+      log(f"Left from {message.guild.name}: {message.channel.name}")
       return
     #そのテキストチャンネルだけ読み上げる
     for x in yom_channel:
