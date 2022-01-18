@@ -61,8 +61,8 @@ async def on_message(message):
   else:
     if message.content == GREETING:
       return
-    log(f"debug: else: yom_channel: {yom_channel}")
-    log("--------")
+    #log(f"debug: else: yom_channel: {yom_channel}")
+    #log("--------")
     #.leaveコマンドでVCから切断
     if message.content == ".leave":
       await message.author.guild.voice_client.disconnect()
