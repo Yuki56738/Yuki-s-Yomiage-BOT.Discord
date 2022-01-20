@@ -1,4 +1,5 @@
 import subprocess
+from log import *
 
 def creat_WAV(inputText):
     #message.contentをテキストファイルに書き込み
@@ -29,7 +30,7 @@ def creat_WAV(inputText):
     #コマンド実行の用意
     cmd=command.format(**args)
     cmd2=cmd.split(" ")
-    print(cmd)
+    log(cmd)
 
     #open_jtalkを実行
     subprocess.run(cmd2)
