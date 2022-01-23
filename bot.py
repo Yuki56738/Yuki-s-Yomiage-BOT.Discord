@@ -37,8 +37,10 @@ async def on_ready():
     log(client.user.name)
     log(client.user.id)
     log(f"Connected to following guilds:")
+    i=0
     for x in client.guilds:
-      log(f"{x}")
+      i += 1
+      log(f"{i}: {x}")
     log('------')
 
 @client.event
