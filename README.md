@@ -15,24 +15,24 @@ sudo apt-get install open-jtalk open-jtalk-mecab-naist-jdic hts-voice-nitech-jp-
 ```
 2. ffmpeg, Discord.pyをインストール  
 ```bash
-sudo apt install python3-pip ffmpeg  
+sudo apt install python3-pip ffmpeg
 pip3 install -U discord.py[voice] ffmpeg
 ```
 
 4. git cloneする  
 ```bash
-git clone https://github.com/Yuki56738/Yuki-s-Yomiage-BOT.Discord.git  
+git clone https://github.com/Yuki56738/Yuki-s-Yomiage-BOT.Discord.git
 ```
 
 6. トークンをreturn_token.pyに記述  
 ```bash
-cd Yuki-s-Yomiage-BOT.Discord  
-vi return_token.py 
+cd Yuki-s-Yomiage-BOT.Discord
+vi return_token.py
 ```
 
 7. 実行する  
 ```bash
-chmod +x bot.py  
+chmod +x bot.py
 ./bot.py
 ```
 
