@@ -17,7 +17,9 @@ TOKEN = return_token()
 GREETING = """Created by Yuki.
 .joinで接続。
 .leaveで切断。
-※たまにメンテナンスで落ちます。その際は再度.joinにて接続をお願い致します。"""
+※たまにメンテナンスで落ちます。その際は再度.joinにて接続をお願い致します。
+
+https://github.com/Yuki56738/Yuki-s-Yomiage-BOT.Discord"""
 
 #グローバル変数の定義
 global yom_channel
