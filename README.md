@@ -36,4 +36,4 @@ chmod +x bot.py
 ./bot.py
 ```
 
-不具合報告、改善点など:  yuki0104@protonmail.com
+不具合報告、改善点など:  enginner@risaton.net  
