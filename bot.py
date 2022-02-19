@@ -2,9 +2,7 @@
 # ライブラリのロード
 import discord
 from discord.ext import commands
-import subprocess
-import ffmpeg
-from voice_generator import creat_WAV
+from voice_generator import create_WAV
 from return_token import return_token
 import re
 from log import log
@@ -99,7 +97,7 @@ async def on_message(message):
                     text_alt = re.sub(pattern, '', msg)
 
                     # WAVファイルを作成
-                    creat_WAV(text_alt)
+                    create_WAV(text_alt)
                     # WAVファイルをDiscordにインプット
                     source = discord.FFmpegPCMAudio("output.wav")
                     # 読み上げる
