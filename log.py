@@ -1,11 +1,9 @@
 import datetime
 import os
 
-dt_now = datetime.datetime.now()
-
 
 def log(arg):
-    global dt_now
+    dt_now = datetime.datetime.now()
     path = './log/'
     if os.path.exists(path):
         pass
