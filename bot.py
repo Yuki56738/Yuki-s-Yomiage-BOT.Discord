@@ -65,11 +65,11 @@ async def leaveyuki(ctx: discord.ApplicationContext):
     await ctx.respond("Disconnecting from VC...")
     # await ctx.author.voice.channel.disconnect()
     for vc in client.voice_clients:
-        print(vc.channel.name)
+        await vc.disconnect()
     # 切断と同時に、yom_channelから該当のテキストチャンネルのIDを削除
     i = 0
     for x in yom_channel:
-        if message.channel.id == x:
+        if ctx.channel.id == x:
             del yom_channel[i]
         i = i + 1
     log(f"debug: leave: yom_channel: {yom_channel}")
@@ -79,12 +79,12 @@ async def leaveyuki(ctx: discord.ApplicationContext):
 async def on_guild_join(guild):
     log(f"This BOT has joined to new guild: {guild}")
 
-
 # イベントハンドラー
 @client.event
 # テキストチャンネルに何か書き込まれたときに実行
 async def on_message(message):
     global yom_channel
+    # print(message.content)
     # .joinコマンドでVCに接続
     if message.content == ".join":
         await message.author.voice.channel.connect()
@@ -95,6 +95,8 @@ async def on_message(message):
         log(f"Joined to {message.guild.name}: {message.channel.name}")
     else:
         if message.content == GREETING:
+            return
+        if message.author == client.user:
             return
         # log(f"debug: else: yom_channel: {yom_channel}")
         # log("--------")
