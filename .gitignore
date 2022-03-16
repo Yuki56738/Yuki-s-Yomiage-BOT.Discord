@@ -1,7 +1,7 @@
-return_token.py
 __pycache__/
 output.wav
 input.txt
 log/
 venv/
 .idea/
+token.txt

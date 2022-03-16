@@ -26,8 +26,9 @@ global yom_channel
 yom_channel = []
 
 # BOTの初期化
-client = commands.Bot(command_prefix='.')
-voice_client = None
+# client = commands.Bot(command_prefix='.')
+# voice_client = None
+client = discord.Bot()
 
 
 # イベントハンドラー
@@ -44,7 +45,36 @@ async def on_ready():
         log(f"{i}: {x}")
     log('------')
 
+@client.slash_command(guild_ids=[813401986299854859])
+async def hello(ctx: discord.ApplicationContext):
+    await ctx.respond("Hello.")
 
+@client.slash_command(guild_ids=[813401986299854859])
+async def joinyuki(ctx: discord.ApplicationContext):
+    # await ctx.interaction.send_message("Connecting to VC...")
+    await ctx.respond("Connecting to VC...")
+    await ctx.author.voice.channel.connect()
+    # yom_channelに読み上げるテキストチャンネルのIDを追加
+    yom_channel.append(ctx.channel.id)
+    log(f"debug: join: yom_channel: {yom_channel}")
+    await ctx.channel.send(GREETING)
+    log(f"Joined to {ctx.guild.name}: {ctx.channel.name}")
+
+@client.slash_command(guild_ids=[813401986299854859])
+async def leaveyuki(ctx: discord.ApplicationContext):
+    await ctx.respond("Disconnecting from VC...")
+    # await ctx.author.voice.channel.disconnect()
+    for vc in client.voice_clients:
+        print(vc.channel.name)
+    # 切断と同時に、yom_channelから該当のテキストチャンネルのIDを削除
+    i = 0
+    for x in yom_channel:
+        if message.channel.id == x:
+            del yom_channel[i]
+        i = i + 1
+    log(f"debug: leave: yom_channel: {yom_channel}")
+    log(f"Left from {ctx.guild.name}: {ctx.channel.name}")
+    return
 @client.event
 async def on_guild_join(guild):
     log(f"This BOT has joined to new guild: {guild}")
