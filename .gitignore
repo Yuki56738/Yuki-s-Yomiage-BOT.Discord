@@ -4,3 +4,4 @@ output.wav
 input.txt
 log/
 venv/
+.idea/
