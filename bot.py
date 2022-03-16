@@ -45,11 +45,18 @@ async def on_ready():
         log(f"{i}: {x}")
     log('------')
 
-@client.slash_command(guild_ids=[813401986299854859])
+
+@client.slash_command(name="hello")
 async def hello(ctx: discord.ApplicationContext):
     await ctx.respond("Hello.")
 
-@client.slash_command(guild_ids=[813401986299854859])
+
+@client.slash_command(name="hello2", guild_ids=[507262078982029313, 813401986299854859])
+async def hello2(ctx: discord.ApplicationContext):
+    await ctx.respond("Hello2.")
+
+
+@client.slash_command(name="joinyuki")
 async def joinyuki(ctx: discord.ApplicationContext):
     # await ctx.interaction.send_message("Connecting to VC...")
     await ctx.respond("Connecting to VC...")
@@ -60,7 +67,8 @@ async def joinyuki(ctx: discord.ApplicationContext):
     await ctx.channel.send(GREETING)
     log(f"Joined to {ctx.guild.name}: {ctx.channel.name}")
 
-@client.slash_command(guild_ids=[813401986299854859])
+
+@client.slash_command(name="leaveyuki")
 async def leaveyuki(ctx: discord.ApplicationContext):
     await ctx.respond("Disconnecting from VC...")
     # await ctx.author.voice.channel.disconnect()
@@ -75,9 +83,12 @@ async def leaveyuki(ctx: discord.ApplicationContext):
     log(f"debug: leave: yom_channel: {yom_channel}")
     log(f"Left from {ctx.guild.name}: {ctx.channel.name}")
     return
+
+
 @client.event
 async def on_guild_join(guild):
     log(f"This BOT has joined to new guild: {guild}")
+
 
 # イベントハンドラー
 @client.event
@@ -134,6 +145,7 @@ async def on_message(message):
                     source = discord.FFmpegPCMAudio("output.wav")
                     # 読み上げる
                     # if yom_channel == message.channel.id:
+                    log(f"text_alt: {text_alt}")
                     message.guild.voice_client.play(source)
 
 
