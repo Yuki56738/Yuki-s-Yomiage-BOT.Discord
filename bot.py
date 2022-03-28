@@ -28,7 +28,18 @@ yom_channel = []
 # BOTの初期化
 # client = commands.Bot(command_prefix='.')
 # voice_client = None
-client = discord.Bot()
+
+intents = discord.Intents(
+    messages=True,
+    guilds=True,
+    members=True,
+    voice_states=True,
+    guild_reactions=True,
+)
+client = commands.AutoShardedBot(
+    command_prefix=".", intents=intents
+)
+# client = discord.Bot()
 
 
 # イベントハンドラー
