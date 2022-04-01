@@ -26,9 +26,18 @@ global yom_channel
 yom_channel = []
 
 # BOTの初期化
-client = commands.Bot(command_prefix='.')
-voice_client = None
-
+# client = commands.Bot(command_prefix='.')
+# voice_client = None
+intents = discord.Intents(
+    messages=True,
+    guilds=True,
+    members=True,
+    voice_states=True,
+    guild_reactions=True,
+)
+client = commands.AutoShardedBot(
+    command_prefix=".", intents=intents
+)
 
 # イベントハンドラー
 @client.event
@@ -49,7 +58,17 @@ async def on_ready():
 async def on_guild_join(guild):
     log(f"This BOT has joined to new guild: {guild}")
 
+@client.command()
+async def hello(ctx):
+    await ctx.send("Hello.")
 
+@client.command(name="join")
+async def join(ctx):
+    await ctx.author.voice.channel.connect()
+    yom_channel.append(message.channel.id)
+    log(f"debug: join: yom_channel: {yom_channel}")
+    await message.channel.send(GREETING)
+    log(f"Joined to {message.guild.name}: {message.channel.name}")
 # イベントハンドラー
 @client.event
 # テキストチャンネルに何か書き込まれたときに実行
