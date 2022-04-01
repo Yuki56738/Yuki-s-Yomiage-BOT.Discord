@@ -58,7 +58,7 @@ async def on_ready():
 async def on_guild_join(guild):
     log(f"This BOT has joined to new guild: {guild}")
 
-@client.command()
+@client.command(name="hello")
 async def hello(ctx):
     await ctx.send("Hello.")
 
