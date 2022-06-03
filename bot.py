@@ -25,6 +25,7 @@ global yom_channel
 # 読むテキストチャンネルの配列
 yom_channel = []
 
+
 # BOTの初期化
 # client = commands.Bot(command_prefix='.')
 # voice_client = None
@@ -136,6 +137,14 @@ async def on_message(message):
             return
         # そのテキストチャンネルだけ読み上げる
         for x in yom_channel:
+            msg_author = message.author
+            client_vc_id = None
+            guild_id = message.guild.id
+            try:
+                msg_author_vc_id = msg_author.voice.channel.id
+                client_vc_id = msg_author.guild.voice_client.channel.id
+            except:
+                pass
             if x == message.channel.id:
                 msg = message.content
                 # URLを読み上げない
@@ -157,8 +166,12 @@ async def on_message(message):
                     # 読み上げる
                     # if yom_channel == message.channel.id:
                     log(f"text_alt: {text_alt}")
+                    # print(message.guild.voice_client.is_connected)
+                    # msg_author.voice.channel.connect()
+                    # await message.guild.voice_client.connect(msg_author_vc_id)
                     message.guild.voice_client.play(source)
+                    # msg_author.guild.voice_client.play(source)
 
 
-# BOT起動
+                # BOT起動
 client.run(TOKEN)
