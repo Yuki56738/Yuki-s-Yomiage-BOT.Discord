@@ -1,4 +1,8 @@
 # Yuki-s-Yomiage-BOT.Discord  
+This project has been moved to（このプロジェクトは以下に移動しました）:  
+https://github.com/Yuki56738/Yuki-s-yomiage-BOT-v2.discord  
+This project is never updated.（もはやこのプロジェクトは更新されません！）  
+
 Discordで、テキストチャットに入力された文字を音声で出力します。  
 Shovelや喋太郎、ALBOTが落ちたときのために創りました！
 
